@@ -8,5 +8,5 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 30.times do
-  FactoryBot.create(:patient)
+  FactoryBot.create(:patient, :with_address)
 end
