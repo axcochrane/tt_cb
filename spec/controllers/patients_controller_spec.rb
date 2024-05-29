@@ -20,6 +20,26 @@ RSpec.describe PatientsController, type: :request do
         expect(JSON.parse(response.body).size).to eq(2)
       end
     end
+
+    context 'with family name search param' do
+      let!(:matching_patient) { create(:patient, family_name: 'UnusualZZZSurname') }
+
+      before { get '/patients', params: { q: 'ZZZ' } }
+
+      it 'returns patients' do
+        expect(response).to have_http_status(:ok)
+      end
+
+      it 'returns just matching patient' do
+        expect(JSON.parse(response.body).size).to eq(1)
+      end
+
+      it 'returns just matching patient' do
+        expect(JSON.parse(response.body).first['family_name']).to eq('UnusualZZZSurname')
+      end
+
+    end
+
   end
 
   describe 'POST /patients' do

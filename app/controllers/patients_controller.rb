@@ -1,7 +1,11 @@
 class PatientsController < ApplicationController
 
   def index
+    family_name_lookup = search_params['q']
+
     patients = Patient.all.includes(:addresses)
+
+    patients = patients.where("family_name ILIKE ?", "%#{family_name_lookup}%") if family_name_lookup
 
     render json: patients, status: :ok
   end
@@ -40,6 +44,10 @@ class PatientsController < ApplicationController
 
   def find_patient
     Patient.find(params[:id])
+  end
+
+  def search_params
+    params.permit(:q)
   end
 
   def patient_params
