@@ -7,11 +7,10 @@ import { useGlobalContext } from '../../../utils/GlobalContext'
 
 function PatientsPage() {
 
-  const [patients, setPatients] = useState<Patient[]>([]);
-  const { isCreateModalOpen } = useGlobalContext();
+  const { isCreateModalOpen, handleSetPatients, patients } = useGlobalContext();
 
   useEffect(() => {
-    getPatients().then(setPatients).catch(console.error);
+    getPatients().then(handleSetPatients).catch(console.error);
   }, []);
 
   return (

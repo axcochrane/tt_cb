@@ -1,9 +1,16 @@
 import Patient from '../../../models/Patient'
+import { deletePatient } from '../../../services/apiClient'
 import { useGlobalContext } from '../../../utils/GlobalContext'
 
 function PatientsTable({ patients }: { patients: Patient[] }) {
 
-  const { openCreateModal } = useGlobalContext();
+  const { openCreateModal, handleSetPatients } = useGlobalContext();
+
+  function removePatientById(id: number) {
+    deletePatient(id).catch(console.error);
+    const updatedPatients = patients.filter(patient => patient.id !== id);
+    handleSetPatients(updatedPatients);
+  }
 
   return (
     <div className="flex flex-col bg-white">
@@ -45,8 +52,12 @@ function PatientsTable({ patients }: { patients: Patient[] }) {
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{patient.given_name}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{patient.family_name}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{patient.dob}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      {/* Actions like edit/delete can be added here */}
+                    <td className="px-6 py-4 whitespace-nowrap text-left text-sm font-medium">
+                    <button onClick={() => removePatientById(patient.id)} className="p-1 border-lg text-red-600 hover:text-red-700 border-gray-100 bg-gray-50 hover:bg-gray-100 hover:border-gray-200">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
                     </td>
                   </tr>
                 ))}
