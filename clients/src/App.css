@@ -5,26 +5,27 @@
 #mainGrid {
   min-width: 100vw;
   min-height: 100vh;
+  background-color: transparent;
 }
 
 
 #navbarGridItem {
-  background-color: red;
+  background-color: transparent;
   min-height: 4rem;
 }
 
 #mainGridItem {
-  background-color: green;
+  background-color: transparent;
   min-height: 100vh;
   display: flex;
 }
 
 #sidebarGridItem {
-  background-color: blue;
+  background-color: transparent;
   min-width: 15vw;
 }
 
 #bodyGridItem {
-  background-color: orange;
+  background-color: transparent;
   width: 100%;
 }
