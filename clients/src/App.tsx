@@ -1,8 +1,8 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Outlet } from "react-router-dom";
 import './App.css'
 import Navbar from './components/shared/Navbar'
 import Sidebar from './components/shared/Sidebar'
-import PatientsPage from './components/pages/Patients/PatientsPage'
+
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
           <Sidebar />
         </div>
         <div id="bodyGridItem">
-          <PatientsPage />
+          <Outlet />
         </div>
       </div>
     </div>
