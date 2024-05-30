@@ -12,7 +12,9 @@ function App() {
         <Navbar />
       </div>
       <div id="mainGridItem">
-        <div id="sidebarGridItem">Sidebar</div>
+        <div id="sidebarGridItem">
+          <Sidebar />
+        </div>
         <div id="bodyGridItem">Main</div>
       </div>
     </div>
