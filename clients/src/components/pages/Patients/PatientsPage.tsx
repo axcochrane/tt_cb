@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { getPatients, createPatient, updatePatient, deletePatient } from '../../../services/apiClient'
-import Patient from '../../../models/Patient'
 import CreatePatientModal from './CreatePatientModal';
 import PatientsTable from './PatientsTable';
 import { useGlobalContext } from '../../../utils/GlobalContext'
@@ -14,10 +13,11 @@ function PatientsPage() {
   }, []);
 
   return (
-    <>
+    <div className="bg-white">
+
       <CreatePatientModal isOpen={isCreateModalOpen} />
       <PatientsTable patients={patients} />
-    </>
+    </div>
   )
 }
 
