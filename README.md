@@ -4,7 +4,7 @@
 # Get Started
 - To boot the BE Rails server
 	- run `bundle install` from the top level root dir
-	- run `rails db:setup` to create, migration and seed the dbΩ
+	- run `rails db:setup` to create, migration and seed the db
 	- run `rails server` to launch the rails app on port 3000Ω
 - To boot the FE React client
 	- run `npm install` from the top level root dir
